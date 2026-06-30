@@ -46,8 +46,6 @@ public class Human extends Player {
      */
     @Override
     public Movement decideMove(Board board) {
-        board.display();
-
         Position origin = selectOriginPosition(board);
         Piece piece = board.getPieceAt(origin);
 
