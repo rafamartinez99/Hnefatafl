@@ -38,16 +38,26 @@ Proyecto sin Maven/Gradle (configurado originalmente como proyecto Eclipse). Par
 ```bash
 git clone https://github.com/rafamartinez99/Hnefatafl.git
 cd Hnefatafl
+```
 
-# Compilar
+**Opción A — desde un IDE (recomendado):** importa la carpeta como proyecto existente en Eclipse o IntelliJ (ya incluye `.classpath`/`.project`) y ejecuta `main/Hnefatafl.java`.
+
+**Opción B — desde terminal:**
+
+```bash
+# Linux / macOS / Git Bash en Windows
 javac -d bin -cp src $(find src -name "*.java" -not -path "*/test/*")
+java -cp bin main.Hnefatafl
+```
 
-# Ejecutar
+```powershell
+# Windows PowerShell
+javac -d bin -cp src (Get-ChildItem -Recurse -Path src -Filter *.java | Where-Object { $_.FullName -notmatch '\\test\\' } | ForEach-Object FullName)
 java -cp bin main.Hnefatafl
 ```
 
 > [!NOTE]
-> Los colores ANSI del tablero requieren una terminal que los soporte (Windows Terminal, la terminal de la mayoría de IDEs, o cualquier terminal Linux/macOS). En `cmd.exe` clásico pueden no renderizarse correctamente.
+> Los colores ANSI del tablero requieren una terminal que los soporte (Windows Terminal, PowerShell moderno, la terminal de la mayoría de IDEs, o cualquier terminal Linux/macOS). En `cmd.exe` clásico pueden no renderizarse correctamente.
 
 Para ejecutar los tests (requiere el JAR incluido en `lib/`):
 
